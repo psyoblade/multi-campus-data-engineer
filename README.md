@@ -1,16 +1,15 @@
 # 설치 가이드
 > Docker Desktop, WSL 및 Terminal (Ubuntu 22.04 LTS, ubuntu 계정) 환경은 모두 구성이 완료되었다고 가정하고 실행합니다
 
-## 설치 환경 확인
-* Docker Desktop CE 버전 설치
-  - 라이센스 문제가 있다면 `Rancher Desktop` 구성도 괜찮음
-* Ubuntu-22.04 LTS 설치 후, 관리자 계정으로 ubuntu 계정으로 생성
+## 설치 환경
+* [Docker Desktop CE](https://docs.docker.com/desktop/setup/install/windows-install/) 버전 설치
+* [Ubuntu-22.04 LTS](https://apps.microsoft.com/detail/9pn20msr04dw?hl=ko-KR&gl=KR) 설치 후, 관리자 계정으로 ubuntu 계정으로 생성
   - `wsl -l` 실행 시에 `Ubuntu-22.04` 임을 확인
-* Windows Store Terminal 앱 설치
+* [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701?hl=ko-KR&gl=KR) 앱 설치
   - 터미널 접속 시에 현재 경로(`pwd`)가 `/home/ubuntu` 임을 확인
 
 
-## 1. 네트워크 상황이 좋다면 개별 장비에서 개별 다운로드
+## 1. 개별 장비에서 직접 다운로드
 > 모든 컴퓨터에서 직접 다운로드하는 방법이 가장 간편하지만, 동시에 너무 많이 다운로드 하는 경우 네트워크 지연이 발생할 수 있습니다
 
 ### 1-1. `Terminal` 에서 아래의 명령어 실행
@@ -20,8 +19,8 @@ for IMAGE in `echo $IMAGES`; do docker pull $IMAGE ; done
 ```
 
 
-## 2. 관리자 최초 1회 이미지 다운로드
-> 관리자 노드 혹은 첫 번째 학생 컴퓨터에서 1차 다운로드 후 캐시된 이미지를 USB 등으로 옮겨서 구성하는 방식
+## 2. 관리자가 다운로드 후 배포
+> 관리자 노드 혹은 첫 번째 학생 컴퓨터에서 한 번만 다운로드 후 캐시된 이미지를 USB 등으로 옮겨서 구성하는 방식
 
 ### 2-1. `Terminal` 프로그램을 통해서 도커 컨테이너 이미지 다운로드
 ```bash
@@ -50,7 +49,7 @@ Copy-Item "\\wsl$\Ubuntu-22.04\home\ubuntu\work\multi-campus-data-engineer\load-
 ```
 
 
-## 3. 학생 캐시 이미지 복사 및 이미지 저장
+## 3. 배포된 이미지 통해 설치
 
 ### 3-1. `PowerShell` 프로그램을 통해서 USB (E:\cache) 이미지 파일을 로컬에 복사
 ```bash
